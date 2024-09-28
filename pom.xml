@@ -11,33 +11,26 @@
         <java.version>22</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <spring-boot.version>3.2.1</spring-boot.version> <!-- Updated version -->
+        <spring-boot.version>3.2.0</spring-boot.version>
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Starter Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
-        <!-- Jansi for colored output -->
         <dependency>
             <groupId>org.fusesource.jansi</groupId>
             <artifactId>jansi</artifactId>
-            <version>2.4.0</version> <!-- Make sure this dependency is included in the final JAR -->
+            <version>2.4.0</version>
         </dependency>
-
-        <!-- Spring Boot Starter Test for Unit Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
             <version>${spring-boot.version}</version>
         </dependency>
-
-        <!-- SLF4J and Logback for Logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -47,7 +40,6 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -55,24 +47,20 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>repackage</goal> <!-- Ensure dependencies are packaged -->
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- Maven Compiler Plugin to set the Java version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.0</version> <!-- Updated version -->
+                <version>3.8.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
-            <!-- Plugin for running tests with Surefire -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
