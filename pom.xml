@@ -26,7 +26,7 @@
         <dependency>
             <groupId>org.fusesource.jansi</groupId>
             <artifactId>jansi</artifactId>
-            <version>2.4.0</version>
+            <version>2.4.0</version> <!-- Make sure this dependency is included in the final JAR -->
         </dependency>
 
         <!-- Spring Boot Starter Test for Unit Testing -->
@@ -52,6 +52,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal> <!-- Ensure dependencies are packaged -->
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- Maven Compiler Plugin to set the Java version -->
@@ -62,20 +69,6 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                </configuration>
-            </plugin>
-
-            <!-- Maven Jar Plugin to add the Main-Class attribute -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.example.demo.DemoApplication</mainClass> <!-- Replace with your main class -->
-                        </manifest>
-                    </archive>
                 </configuration>
             </plugin>
 
